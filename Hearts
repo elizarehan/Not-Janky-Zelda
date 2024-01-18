@@ -12,5 +12,9 @@ public class Hearts extends Actor
     public void act()
     {
         getWorld().showText(""+lives, 30, 30);
+ if (lives <= 0){
+            getWorld().showText ("YOU DIED", 350, 200);
+            FadeOverlay.fadeOut = true;
+        }
     }
 }
