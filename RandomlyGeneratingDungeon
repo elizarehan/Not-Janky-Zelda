@@ -42,8 +42,8 @@ public class RandomlyGeneratingDungeon extends World
         }
     }
     
-   public void paintOrder(){
-        setPaintOrder(Link.class,FadeOverlay.class,Hearts.class, Wall.class,Key.class,Block.class,Lava.class,Water.class);
+ public void paintOrder(){
+        setPaintOrder(FadeOverlay.class,Link.class,Hearts.class, Wall.class,Key.class,Block.class,Lava.class,Water.class);
     }
     
     public void act(){
