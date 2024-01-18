@@ -59,10 +59,24 @@ public class Link extends Actor
     {
         
     }
-    Class[] objects = {Wall.class,Block.class,Lava.class,Water.class};
-    int collisionAmount=0;
+
+    Class[] objects = {Wall.class,Block.class,};
+    Class [] danger = {Lava.class, Water.class};
+    int collisionAmount = 0;
+    
     public void collisionDetection()
     {
+        while (collisionAmount < danger.length){
+          if (isTouching(Lava.class)){
+              Hearts.lives = Hearts.lives - Hearts.lives;
+          }
+          if (isTouching (Water.class)){
+              Hearts.lives = Hearts.lives - 1;
+              setLocation (getX() + 20, getY() - 20);
+          }
+           collisionAmount++;
+        }
+        collisionAmount = 0;
         while (collisionAmount<objects.length){
             //Down check
             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i+=4){
