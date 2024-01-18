@@ -62,15 +62,24 @@ public class Block extends Actor
             if (down!=null&&down.getX()>getX()-o&&down.getX()<getX()+o&&Greenfoot.isKeyDown("w")){
                 yMove=-m;
             }
+            
             //Up check
             Actor up = getOneObjectAtOffset(0, -getImage().getHeight()/2-2,objects[collisionAmount]);
-            if (up!=null&&up.getX()>getX()-o&&up.getX()<getX()+o&&Greenfoot.isKeyDown("s")){yMove=m;}
+            if (up!=null&&up.getX()>getX()-o&&up.getX()<getX()+o&&Greenfoot.isKeyDown("s")){
+                yMove=m;
+            }
+            
             //Left check
             Actor left = getOneObjectAtOffset(-getImage().getWidth()/2-2, 0,objects[collisionAmount]);
-            if (left!=null&&left.getY()>getY()-o&&left.getY()<getY()+o&&Greenfoot.isKeyDown("d")){xMove=m;}
+            if (left!=null&&left.getY()>getY()-o&&left.getY()<getY()+o&&Greenfoot.isKeyDown("d")){
+                xMove=m;
+            }
+            
             //Right check
             Actor right = getOneObjectAtOffset(getImage().getWidth()/2+2, 0,objects[collisionAmount]);
-            if (right!=null&&right.getY()>getY()-o&&right.getY()<getY()+o&&Greenfoot.isKeyDown("a")){xMove=-m;}
+            if (right!=null&&right.getY()>getY()-o&&right.getY()<getY()+o&&Greenfoot.isKeyDown("a")){
+                xMove=-m;
+            }
             collisionAmount++;
         }
         collisionAmount=0;
@@ -83,29 +92,35 @@ public class Block extends Actor
             //Down check
             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i++){
                 Actor object = getOneObjectAtOffset(i, getImage().getHeight()/2+20, blocks[collisionAmount]);
-                if (object!=null&&yMove>0){negateMoving();}
+                if (object!=null&&yMove>0){
+                    negateMoving();
+                }
             }
             //Up check
             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i++){
                 Actor object = getOneObjectAtOffset(i, -getImage().getHeight()/2-20,blocks[collisionAmount]);
-                if (object!=null&&yMove<0){negateMoving();}
+                if (object!=null&&yMove<0){
+                    negateMoving();
+                }
             }
             //Left check
             for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-2; i++){
                 Actor object = getOneObjectAtOffset(-getImage().getWidth()/2-20, i,blocks[collisionAmount]);
-                if (object!=null&&xMove<0){negateMoving();}
+                if (object!=null&&xMove<0){
+                    negateMoving();
+                }
             }
             //Right check
             for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-2; i++){
                 Actor object = getOneObjectAtOffset(getImage().getWidth()/2+20, i,blocks[collisionAmount]);
-                if (object!=null&&xMove>0){negateMoving();}
+                if (object!=null&&xMove>0){
+                    negateMoving();
+                }
             }
             
             //CHECK IF BLOCK IS ON LAVA
             if(isTouching(Lava.class)){
                 negateMoving();
-                //Actor object = getOneIntersectingObject(Lava.class);
-                //setImage("GreenTile.png");
                 removeTouching(Lava.class);
                 getWorld().removeObject(this);
                 break;
@@ -117,7 +132,10 @@ public class Block extends Actor
             
             collisionAmount++;
         }
-        if (xMove!=0||yMove!=0){move=false; moves=20;} //Moves is the amount of times the block will move before stopping
+        if (xMove!=0||yMove!=0){
+            move=false; 
+            moves=20;
+        } //Moves is the amount of times the block will move before stopping
     }
     public void negateMoving(){
         xMove=0;
@@ -127,12 +145,29 @@ public class Block extends Actor
     public void key(){
         int x=0;
         int y=0;
-        if (keyPos==-1){keyPos=Greenfoot.getRandomNumber(5);}
-        if (keyPos==0){x=8; y=6;}
-        if (keyPos==1){x=2; y=9;}
-        if (keyPos==2){x=14; y=9;}
-        if (keyPos==3){x=14; y=2;}
-        if (keyPos==4){x=2; y=2;}
+        if (keyPos==-1){
+            keyPos=Greenfoot.getRandomNumber(5);
+        }
+        if (keyPos==0){
+            x=8; 
+            y=6;
+        }
+        if (keyPos==1){
+            x=2; 
+            y=9;
+        }
+        if (keyPos==2){
+            x=14; 
+            y=9;
+        }
+        if (keyPos==3){
+            x=14; 
+            y=2;
+        }
+        if (keyPos==4){
+            x=2; 
+            y=2;
+        }
         getWorld().addObject(new Key(),x*40+20,getWorld().getHeight()-y*40-20);
         event=0;
     }
