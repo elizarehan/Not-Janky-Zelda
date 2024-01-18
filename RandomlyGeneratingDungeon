@@ -43,16 +43,19 @@ public class RandomlyGeneratingDungeon extends World
     }
     
  public void paintOrder(){
-        setPaintOrder(FadeOverlay.class,Link.class,Hearts.class, Wall.class,Key.class,Block.class,Lava.class,Water.class);
+        setPaintOrder(Skull.class, FadeOverlay.class,Link.class,Hearts.class, Wall.class,Key.class,Block.class,Lava.class,Water.class);
     }
     
-    public void act(){
+  public void act(){
         paintOrder();
         if (tileset==0)setBackground(new GreenfootImage("GreenTile.png"));
         if (tileset==1)setBackground(new GreenfootImage("BlueTile.png"));
         if (tileset==2)setBackground(new GreenfootImage("AquaTile.png"));
         if (tileset==3)setBackground(new GreenfootImage("YellowTile.png"));
         if (tileset==4)setBackground(new GreenfootImage("GreyTile.png"));
+         if (Hearts.lives <= 0){
+             addObject(new Skull (), 350, 300);
+    }
     }
     
     public void testDungeon(){
