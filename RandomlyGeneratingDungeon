@@ -48,11 +48,11 @@ public class RandomlyGeneratingDungeon extends World
     
   public void act(){
         paintOrder();
-        if (tileset==0)setBackground(new GreenfootImage("GreenTile.png"));
-        if (tileset==1)setBackground(new GreenfootImage("BlueTile.png"));
-        if (tileset==2)setBackground(new GreenfootImage("AquaTile.png"));
-        if (tileset==3)setBackground(new GreenfootImage("YellowTile.png"));
-        if (tileset==4)setBackground(new GreenfootImage("GreyTile.png"));
+        if (tileSet==0)setBackground(new GreenfootImage("GreenTile.png"));
+        if (tileSet==1)setBackground(new GreenfootImage("BlueTile.png"));
+        if (tileSet==2)setBackground(new GreenfootImage("AquaTile.png"));
+        if (tileSet==3)setBackground(new GreenfootImage("YellowTile.png"));
+        if (tileSet==4)setBackground(new GreenfootImage("GreyTile.png"));
          if (Hearts.lives <= 0){
              addObject(new Skull (), 350, 300);
     }
@@ -104,9 +104,9 @@ public class RandomlyGeneratingDungeon extends World
     3 = Yellow
     4 = Grey
     */
-    int tileset = 0;
-    public void changeTileSet(int i){
-        tileset=i;
+    int tileSet = 0;
+    public void changetileSet(int i){
+        tileSet=i;
     }
     
     //Dungeon Manipulation methods
