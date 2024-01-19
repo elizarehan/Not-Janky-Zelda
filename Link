@@ -2,12 +2,13 @@ import greenfoot.*;
 
 public class Link extends Actor
 {
-    int xmove=0;
-    int xmove2=0;
-    int ymove=0;
-    int ymove2=0;
+    int xMove=0;
+    int xMove2=0;
+    int yMove=0;
+    int yMove2=0;
     int scroll=0;
     int scrollTimer=0;
+    
     public void act() 
     {
         //Methods
@@ -32,8 +33,8 @@ public class Link extends Actor
             }
         }
         if (scroll==0){
-            setLocation(getX()+xmove+xmove2,getY()+ymove+ymove2);
-        }else{
+            setLocation(getX()+xMove+xMove2,getY()+yMove+yMove2);
+        } else {
             scroll();
         }
     }
@@ -44,19 +45,19 @@ public class Link extends Actor
         scrollTimer++;
         if(scrollTimer==30){
             if (scroll==1){
-                xmove=-9; ymove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("right");
+                xMove=-9; yMove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("right");
             }
             if (scroll==2){
-                xmove=9; ymove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("left");
+                xMove=9; yMove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("left");
             }
             if (scroll==3){
-                xmove=0; ymove=-9; ((RandomlyGeneratingDungeon)getWorld()).scroll("down");
+                xMove=0; yMove=-9; ((RandomlyGeneratingDungeon)getWorld()).scroll("down");
             }
             if (scroll==4){
-                xmove=0; ymove=9; ((RandomlyGeneratingDungeon)getWorld()).scroll("up");
+                xMove=0; yMove=9; ((RandomlyGeneratingDungeon)getWorld()).scroll("up");
             }
         }else if(scrollTimer>30){
-            setLocation(getX()+xmove,getY()+ymove);
+            setLocation(getX()+xMove,getY()+yMove);
             if (scroll==1&&getX()<=30){
                 scroll=0;
             }
@@ -80,30 +81,30 @@ public class Link extends Actor
         if (scroll!=0)return;
         int m=5; //Rate of cells that will be traveled
         //Change movement
-        if (Greenfoot.isKeyDown("a")&&ymove==0){
-            xmove=-m; 
+        if (Greenfoot.isKeyDown("a")&&yMove==0){
+            xMove=-m; 
             setRotation(270);
         }
-        if (Greenfoot.isKeyDown("d")&&ymove==0){
-            xmove=m; 
+        if (Greenfoot.isKeyDown("d")&&yMove==0){
+            xMove=m; 
             setRotation(90);
         }
-        if (Greenfoot.isKeyDown("w")&&xmove==0){
-            ymove=-m;
+        if (Greenfoot.isKeyDown("w")&&xMove==0){
+            yMove=-m;
             setRotation(0);
         }
-        if (Greenfoot.isKeyDown("s")&&xmove==0){
+        if (Greenfoot.isKeyDown("s")&&xMove==0){
             //setRotation(180);
             //setLocation(getX(),getY()+m);
-            ymove=m;
+            yMove=m;
             setRotation(180);
         }
         
         if (! Greenfoot.isKeyDown("a")&&! Greenfoot.isKeyDown("d")){
-            xmove=0;
+            xMove=0;
         }
         if (! Greenfoot.isKeyDown("w")&&! Greenfoot.isKeyDown("s")){
-            ymove=0;
+            yMove=0;
         }
         
     }
@@ -151,32 +152,37 @@ public class Link extends Actor
              //Down check
             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i+=4){
                 Actor object = getOneObjectAtOffset(i, getImage().getHeight()/2+2,objects[collisionAmount]);
-                if (object!=null&&ymove>0){i=-getImage().getWidth()/2+2; ymove=0; setLocation(getX(),object.getY()-object.getImage().getHeight()/2-getImage().getHeight()/2);}
+                if (object!=null&&yMove>0){
+                    i=-getImage().getWidth()/2+2; 
+                    yMove=0; 
+                    setLocation(getX(),object.getY()-object.getImage().getHeight()/2-getImage().getHeight()/2);
+                }
             }
+            
             //Up check
             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i+=4){
                 Actor object = getOneObjectAtOffset(i, -getImage().getHeight()/2-3,objects[collisionAmount]);
-                if (object!=null&&ymove<0){
+                if (object!=null&&yMove<0){
                     i=-getImage().getWidth()/2+2;
-                    ymove=0;
+                    yMove=0;
                     setLocation(getX(),object.getY()+object.getImage().getHeight()/2+getImage().getHeight()/2);
                 }
             }
             //Left check
             for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-2; i+=4){
                 Actor object = getOneObjectAtOffset(0-getImage().getWidth()/2-3, i,objects[collisionAmount]);
-                if (object!=null&&xmove<0){
+                if (object!=null&&xMove<0){
                     i=-getImage().getHeight()/2+2;
-                    xmove=0;
+                    xMove=0;
                     setLocation(object.getX()+object.getImage().getWidth()/2+getImage().getWidth()/2,getY());
                 }
             }
             //Right check
             for (int i=-getImage().getHeight()/2+2; i<getImage().getHeight()/2-2; i+=4){
                 Actor object = getOneObjectAtOffset(getImage().getWidth()/2+2, i,objects[collisionAmount]);
-                if (object!=null&&xmove>0){
+                if (object!=null&&xMove>0){
                     i=-getImage().getHeight()/2+2;
-                    xmove=0;
+                    xMove=0;
                     setLocation(object.getX()-object.getImage().getWidth()/2-getImage().getWidth()/2,getY());
                 }
             }
@@ -185,4 +191,3 @@ public class Link extends Actor
             collisionAmount=0;
     }
 }
-
