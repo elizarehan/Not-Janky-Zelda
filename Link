@@ -78,39 +78,71 @@ public class Link extends Actor
     public void basicMoving()
     {
         if (scroll!=0)return;
-        int m=3; //Rate of cells that will be traveled
+        int m=5; //Rate of cells that will be traveled
         //Change movement
         if (Greenfoot.isKeyDown("a")&&ymove==0){
-            xmove=-m; setRotation(270);
+            xmove=-m; 
+            setRotation(270);
         }
         if (Greenfoot.isKeyDown("d")&&ymove==0){
-            xmove=m; setRotation(90);
+            xmove=m; 
+            setRotation(90);
         }
         if (Greenfoot.isKeyDown("w")&&xmove==0){
-            ymove=-m; setRotation(0);
+            ymove=-m;
+            setRotation(0);
         }
         if (Greenfoot.isKeyDown("s")&&xmove==0){
-            ymove=m; setRotation(180);
+            //setRotation(180);
+            //setLocation(getX(),getY()+m);
+            ymove=m;
+            setRotation(180);
         }
+        
         if (! Greenfoot.isKeyDown("a")&&! Greenfoot.isKeyDown("d")){
             xmove=0;
         }
         if (! Greenfoot.isKeyDown("w")&&! Greenfoot.isKeyDown("s")){
             ymove=0;
         }
+        
     }
     static String direction="up";
     public void graphics()
     {
         
     }
-    Class[] objects = {Wall.class, Block.class, Water.class, Key.class};//when bumping into these stop character from moving
-    //Class[] collectables ={Key.class};//when bumping into These collect and add to inventory maybe
+    //Class[] objects = {Wall.class, Block.class, Lava.class, Water.class, Key.class};//when bumping into these stop character from moving
     //Class[] danger= {Lava.class};//when touching these dangerous thing lower lives/health
-    int collisionAmount=0;
+    Class[] objects = {Wall.class,Block.class,};
+    Class [] danger = {Lava.class, Water.class};
+    Class[] collectables ={Key.class};//when bumping into These collect and add to inventory maybe
+    int collisionAmount = 0;
+
     public void collisionDetection()
     {
-        while (collisionAmount < objects.length){
+        while (collisionAmount < danger.length){
+          if (isTouching(Lava.class)){
+              Hearts.lives = Hearts.lives - Hearts.lives;
+          }
+          if (isTouching (Water.class)){
+              Hearts.lives = Hearts.lives - 1;
+              setLocation (getX() + 20, getY() - 20);
+          }
+           collisionAmount++;
+        }
+        collisionAmount = 0;
+        
+        //while (collisionAmount < collectables.length){trying anbother method for key but ignore right now
+            /*Actor key;
+            key = getOneObjectAtOffset(0,0,Key.class);
+            RandomlyGeneratingDungeon dungeon = (RandomlyGeneratingDungeon) getWorld();
+                if (key != null){
+                    dungeon.removeObject(Key.class);
+                }
+                */
+     
+             while (collisionAmount < objects.length){
                 if (isTouching(Key.class)){
                     getWorld().showText("Tocuhed Key", 80, 80); 
                     removeTouching(Key.class);
@@ -153,3 +185,4 @@ public class Link extends Actor
             collisionAmount=0;
     }
 }
+
