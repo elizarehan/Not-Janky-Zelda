@@ -47,6 +47,8 @@ public class RandomlyGeneratingDungeon extends World {
                 addObject(new Water(),xPos,yPos);
             } else if (room.charAt(i) == 'p'){
                 addObject(new PoisonOak(),xPos,yPos);
+            } else if (room.charAt(i) == 'D'){
+                addObject(new Doll(), xPos, yPos);
             }
         }
     }
@@ -70,7 +72,7 @@ public class RandomlyGeneratingDungeon extends World {
         block(16,3);
     }
     
-    Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class, PoisonOak.class, Cat.class};
+    Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class, PoisonOak.class, Cat.class, Doll.class};
     public void scroll(String direction){
         int v=0;
         int h=0;
