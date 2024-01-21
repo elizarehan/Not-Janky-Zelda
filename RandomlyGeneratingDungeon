@@ -1,8 +1,7 @@
 import greenfoot.*;
 import java.util.List;
 
-public class RandomlyGeneratingDungeon extends World
-{   
+public class RandomlyGeneratingDungeon extends World {       
     /**
      * Constructor for objects of class RandomlyGeneratingDungeon.
      * 
@@ -11,7 +10,7 @@ public class RandomlyGeneratingDungeon extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(680, 480, 1, false); 
         addObject (new Hearts (), 30, 30);
-        //addObject(new Cat(),50,50);
+        addObject(new Cat(),750,100);
         addObject(new Link(),getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
         addObject(new Rooms(),getWidth()/2,getHeight()/2);
@@ -31,11 +30,10 @@ public class RandomlyGeneratingDungeon extends World
         drawRoom(Rooms.boss, 1, -4);
         placeBlocks();        
         paintOrder();
-    }
-
-   public void drawRoom(String room, int x, int y){
-
-        for (int i =0; i < (17*12); i++){
+}
+    
+   public void drawRoom(String room, int x, int y) {        
+       for (int i =0; i < (17*12); i++){
             int row = (int)i/17;
             int col = i%17;
             int xPos = (x*17*40)+col*40+20;
@@ -47,7 +45,7 @@ public class RandomlyGeneratingDungeon extends World
                 addObject(new Lava(),xPos,yPos);
             } else if (room.charAt(i) == 'w'){
                 addObject(new Water(),xPos,yPos);
-            } else if (room.charAt(i) == 'p'){ //doesnt work in other rooms
+            } else if (room.charAt(i) == 'p'){
                 addObject(new PoisonOak(),xPos,yPos);
             }
         }
@@ -72,7 +70,7 @@ public class RandomlyGeneratingDungeon extends World
         block(16,3);
     }
     
-    Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class};
+    Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class, PoisonOak.class, Cat.class};
     public void scroll(String direction){
         int v=0;
         int h=0;
@@ -94,7 +92,9 @@ public class RandomlyGeneratingDungeon extends World
     }
 
     public void paintOrder(){
-        setPaintOrder(Skull.class, FadeOverlay.class,Link.class,Hearts.class, Wall.class,Key.class,Block.class,Lava.class,Water.class, Cat.class);
+        setPaintOrder(Skull.class, FadeOverlay.class,Link.class,Hearts.class,
+                        Wall.class,Key.class,Block.class,Lava.class,Water.class, 
+                            PoisonOak.class, Cat.class);
     }
 
     public void act(){
