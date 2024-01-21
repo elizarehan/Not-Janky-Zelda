@@ -20,6 +20,7 @@ public class Rooms extends Actor {
      * b - block
      * p - poison oak
      * k - key
+     * D - doll
      * 
      * c - coins
      * O - wishing well
@@ -53,14 +54,14 @@ public class Rooms extends Actor {
 
     static String offProperty = "WWWWWWWWWWWWWWWWW" +
         "ooooooooooooooooW" + //add wishing well and stuff
+        "oooooooooooooopoW" +
+        "ooooooooooooooooW" +
         "ooooooooooooooooW" +
         "ooooooooooooooooW" +
         "ooooooooooooooooW" +
         "ooooooooooooooooW" +
         "ooooooooooopooooW" +
-        "ooooooooooooooooW" +
-        "ooooooooooooooooW" +
-        "ooooooooooooooooW" +
+        "oopoooooooooooooW" +
         "ooooooooooooooooW" +
         "WWWWWWWWWWWWWWWWW";
 
@@ -144,14 +145,14 @@ public class Rooms extends Actor {
 
     static String garden = "WWWWWWWWWWWWWWWWW" +
         "WoooooooooooooooW" +
-        "WoooooooooooooooW" +
+        "WooooooopoooooooW" +
         "WoooooooooooooooW" +
         "WoooooooooooooooW" +
         "Woooooooooooooooo" +
         "Woooooooooooooooo" +
         "WoooooooooooooooW" +
         "WoooooooooooooooW" +
-        "WoooooooooooooooW" +
+        "WoopooooooooooooW" +
         "WoooooooooooooooW" +
         "WWWWWWWWWWWWWWWWW";
 
@@ -159,7 +160,7 @@ public class Rooms extends Actor {
         "WoooooooooooooooW" +
         "WoooooooooooooooW" +
         "WoooooooooooooooW" +
-        "WoooooooooooooooW" +
+        "WpooooooooooooooW" +
         "doooooooooooooooW" +
         "doooooooooooooooW" +
         "WoooooooooooooooW" +
@@ -170,7 +171,7 @@ public class Rooms extends Actor {
 
     static String CoralinesRoom = "WWWWWWWdddWWWWWWW" +
         "WoooooooooooooooW" +
-        "WoooooooooooooooW" +
+        "WoooooooooooooDoW" +
         "WoooooooooooooooW" +
         "WoooooooooooooooW" +
         "WoooooooooooooooW" +
