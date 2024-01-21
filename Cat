@@ -1,0 +1,20 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * The Cat.
+ * He follows you around.
+ * 
+ * Eliza Rehan 
+ * 1/20/2024
+ */
+
+public class Cat extends Actor {
+  public Cat(){
+  }
+    public void act(){
+      Link link = (Link)getWorld().getObjects(Link.class).get(0);
+        setLocation(link.getX(), link.getY() + 50);
+    
+    }
+    
+}
