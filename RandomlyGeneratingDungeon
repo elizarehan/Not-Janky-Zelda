@@ -38,15 +38,17 @@ public class RandomlyGeneratingDungeon extends World
         for (int i =0; i < (17*12); i++){
             int row = (int)i/17;
             int col = i%17;
+            int xPos = (x*17*40)+col*40+20;
+            int yPos = (12*y*40)+row*40+20;
 
             if (room.charAt(i) == 'W'){
-                addObject(new Wall(40,40),(x*17*40)+col*40+20,(12*y*40)+row*40+20);
+                addObject(new Wall(40,40),xPos,yPos);
             } else if (room.charAt(i) == 'l'){
-                addObject(new Lava(),(x*17*40)+col*40+20,(12*y*40)+row*40+20);
+                addObject(new Lava(),xPos,yPos);
             } else if (room.charAt(i) == 'w'){
-                addObject(new Water(),(x*17*40)+col*40+20,(12*y*40)+row*40+20);
+                addObject(new Water(),xPos,yPos);
             } else if (room.charAt(i) == 'p'){ //doesnt work in other rooms
-                addObject(new PoisonOak(),(x*17*40)+col*40+20,(12*y*40)+row*40+20);
+                addObject(new PoisonOak(),xPos,yPos);
             }
         }
     }
