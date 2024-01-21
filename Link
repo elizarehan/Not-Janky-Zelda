@@ -94,8 +94,6 @@ public class Link extends Actor
             setRotation(0);
         }
         if (Greenfoot.isKeyDown("s")&&xMove==0){
-            //setRotation(180);
-            //setLocation(getX(),getY()+m);
             yMove=m;
             setRotation(180);
         }
@@ -105,6 +103,9 @@ public class Link extends Actor
         }
         if (! Greenfoot.isKeyDown("w")&&! Greenfoot.isKeyDown("s")){
             yMove=0;
+        }
+        if (Greenfoot.isKeyDown("p")){//If user clicks letter key p they can play the piano
+            Greenfoot.setWorld(new Piano());
         }
         
     }
@@ -128,27 +129,21 @@ public class Link extends Actor
           }
           if (isTouching (Water.class)){
               Hearts.lives = Hearts.lives - 1;
-              setLocation (getX() + 20, getY() - 20);
+              setLocation (getWorld().getWidth()/2, getWorld().getHeight()/2);
           }
            collisionAmount++;
         }
         collisionAmount = 0;
-        
-        //while (collisionAmount < collectables.length){trying anbother method for key but ignore right now
-            /*Actor key;
-            key = getOneObjectAtOffset(0,0,Key.class);
-            RandomlyGeneratingDungeon dungeon = (RandomlyGeneratingDungeon) getWorld();
-                if (key != null){
-                    dungeon.removeObject(Key.class);
-                }
-                */
-     
-             while (collisionAmount < objects.length){
+
+             //while (collisionAmount < objects.length){
                 if (isTouching(Key.class)){
                     getWorld().showText("Tocuhed Key", 80, 80); 
+                    //You guys need to download the sounds
+                    Greenfoot.playSound("collectedSound.mp3");
                     removeTouching(Key.class);
-                    break;
+                    //break;
                 }
+            while (collisionAmount < objects.length){
              //Down check
             for (int i=-getImage().getWidth()/2+2; i<getImage().getWidth()/2-2; i+=4){
                 Actor object = getOneObjectAtOffset(i, getImage().getHeight()/2+2,objects[collisionAmount]);
