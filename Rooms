@@ -51,14 +51,14 @@ public class Rooms extends Actor {
     static String frontLawn = "WWWWWWWdddWWWWWWW" + //add blocks
         "Woooooooooooowwoo" +
         "Wooooooooooowokwo" +
-        "Woooooooooooowwoo" +
-        "WoooooooToooooooo" +
+        "Woooboooooooowwoo" +
         "Woooooooooooooooo" +
+        "Woooobooooooooooo" +
         "Woooooooooooooooo" +
-        "Woooooooooooooooo" +
-        "Wlllooooooooooooo" +
-        "Wlklooooooooooooo" +
-        "Wlllooooooooooooo" +
+        "Woooboooooooobbbb" +
+        "Wllloooooooooooob" +
+        "Wlkloooooooooooob" +
+        "Wllloooooooooooob" +
         "WWWWWWWWWWWWWWWWW";
 
     static String offProperty = "WWWWWWWWWWWWWWWWW" +
