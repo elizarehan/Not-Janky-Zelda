@@ -1,7 +1,9 @@
 import greenfoot.*;
 import java.util.List;
 
-public class RandomlyGeneratingDungeon extends World {       
+public class RandomlyGeneratingDungeon extends World {
+    int ID;
+
     /**
      * Constructor for objects of class RandomlyGeneratingDungeon.
      * 
@@ -14,26 +16,29 @@ public class RandomlyGeneratingDungeon extends World {
         addObject(new Link(),getWidth()/2,getHeight()/2+20);
         addObject(new FadeOverlay(),getWidth()/2,getHeight()/2);
         addObject(new Rooms(),getWidth()/2,getHeight()/2);
-        
-        drawRoom(Rooms.lockedRoom, -1, 0);
-        drawRoom(Rooms.frontLawn, 0, 0);
-        drawRoom(Rooms.offProperty, 1, 0);
-        drawRoom(Rooms.room, -1, -1);
-        drawRoom(Rooms.hall, 0, -1);
-        drawRoom(Rooms.ghostRoom, 1, -1);
-        drawRoom(Rooms.kitchen, -1, -2);
-        drawRoom(Rooms.diningRoom, 0, -2);
-        drawRoom(Rooms.stairs, 1, -2);
-        drawRoom(Rooms.garden, -1, -3);
-        drawRoom(Rooms.study, 0, -3);
-        drawRoom(Rooms.CoralinesRoom, 1, -3);
-        drawRoom(Rooms.boss, 1, -4);
-        placeBlocks();        
+        addObject(new Text(), 0, 0);
+
+        drawRoom(Rooms.lockedRoom, 0, 4);
+        drawRoom(Rooms.frontLawn, 1, 4);
+        drawRoom(Rooms.offProperty, 2, 4);
+        drawRoom(Rooms.room, 0, 3);
+        drawRoom(Rooms.hall, 1, 3);
+        drawRoom(Rooms.ghostRoom, 2, 3);
+        drawRoom(Rooms.kitchen, 0, 2);
+        drawRoom(Rooms.diningRoom, 1, 2);
+        drawRoom(Rooms.stairs, 2, 2);
+        drawRoom(Rooms.garden, 0, 1);
+        drawRoom(Rooms.study, 1, 1);
+        drawRoom(Rooms.CoralinesRoom, 2, 1);
+        drawRoom(Rooms.boss, 2, 0);
+        placeMoveableBlocks();        
         paintOrder();
-}
-    
-   public void drawRoom(String room, int x, int y) {        
-       for (int i =0; i < (17*12); i++){
+    }
+
+    public void drawRoom(String room, int x, int y) {      
+        x=x-1;
+        y=y-4;
+        for (int i =0; i < (17*12); i++){
             int row = (int)i/17;
             int col = i%17;
             int xPos = (x*17*40)+col*40+20;
@@ -49,31 +54,27 @@ public class RandomlyGeneratingDungeon extends World {
                 addObject(new PoisonOak(),xPos,yPos);
             } else if (room.charAt(i) == 'D'){
                 addObject(new Doll(), xPos, yPos);
+            } else if(room.charAt(i) == 'O'){
+                addObject(new WishingWell(),xPos,yPos);
+            } else if(room.charAt(i) == 'b'){
+                addObject(new Block(false,0,-1),xPos,yPos);
             }
-        }
     }
+}
+        public void placeMoveableBlocks(){
+            //front lawn
+            block(4,6,true,-1);
+            block(3,6,true,1,2);
+            block(12,4,true,1,4);
+            block(12,3,true);
+            block(12,2,true, -1);
+            block(12,1,true);            
+        }
 
-    public void placeBlocks(){
-        block(0,0);
-        block(4,6,true,-1);
-        block(3,6,true,1,2);
-        block(5,6);
-        block(4,8);
-        block(4,4);
-        for (int i= 0; i < 4; i++){
-            block(i+13,4);
-        }
-        block(12,4,true,1,4);
-        block(12,3,true);
-        block(12,2,true, -1);
-        block(12,1,true);
-        block(16,1);
-        block(16,2);
-        block(16,3);
-    }
-    
-    Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class, PoisonOak.class, Cat.class, Doll.class};
-    public void scroll(String direction){
+        Class[] all = {Wall.class,Key.class,Block.class,Lava.class,Water.class, 
+                        PoisonOak.class, Cat.class, Doll.class, Text.class, 
+                        WishingWell.class};
+        public void scroll(String direction){
         int v=0;
         int h=0;
         if (direction.equals("left"))h=getWidth();
@@ -94,9 +95,9 @@ public class RandomlyGeneratingDungeon extends World {
     }
 
     public void paintOrder(){
-        setPaintOrder(Skull.class, FadeOverlay.class,Link.class,Hearts.class,
-                        Wall.class,Key.class,Block.class,Lava.class,Water.class, 
-                            PoisonOak.class, Cat.class);
+        setPaintOrder(Skull.class, FadeOverlay.class,Link.class,Hearts.class, Text.class,
+            Wall.class,Key.class,Block.class,Lava.class,Water.class, 
+            PoisonOak.class, Cat.class);
     }
 
     public void act(){
