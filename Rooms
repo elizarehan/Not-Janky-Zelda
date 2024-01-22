@@ -30,7 +30,6 @@ public class Rooms extends Actor {
      * k - key
      * D - doll
      * 
-     * c - coins
      * O - wishing well
      */
     
@@ -68,7 +67,7 @@ public class Rooms extends Actor {
         "ooooooooooooooooW" +
         "oooooooOOOooooooW" +
         "oooooooOwOooooooW" +
-        "oooToooOOOooooooW" +
+        "oooooooOOOooooooW" +
         "ooooooooooopooooW" +
         "oopoooooooooooooW" +
         "ooooooooooooooooW" +
@@ -76,8 +75,8 @@ public class Rooms extends Actor {
 
     static String room = "WWWWWWWWWWWWWWWWW" +
         "Woooooooooooooooo" +
-        "Woooooooooooooooo" +
-        "Woooooooooooooooo" +
+        "Woobboooooooooooo" +
+        "Woobooooooooooooo" +
         "Woooooooooooooooo" +
         "Woooooooooooooooo" +
         "Woooooooooooooooo" +
@@ -161,8 +160,8 @@ public class Rooms extends Actor {
         "Woooooooooooooooo" +
         "WoooooooooooooooW" +
         "WoooooooooooooooW" +
-        "WoopooooooooooooW" +
-        "WoooooooooooooooW" +
+        "WoopooooooooooowW" +
+        "WooooooooooooowwW" +
         "WWWWWWWWWWWWWWWWW";
 
     static String study = "WWWWWWWWWWWWWWWWW" +
@@ -179,14 +178,14 @@ public class Rooms extends Actor {
         "WoooooooooooooooW";
 
     static String CoralinesRoom = "WWWWWWWdddWWWWWWW" +
-        "WoooooooooooooooW" +
-        "WoooooooooooooDoW" +
-        "WoooooooooooooooW" +
-        "WoooooooooooooooW" +
+        "WbboooooooooooooW" +
+        "WbboooooooooooDoW" +
         "WoooooooooooooooW" +
         "WoooooooooooooooW" +
         "WoooooooooooooooW" +
         "WoooooooooooooooW" +
+        "WooooooooooooobbW" +
+        "WoooooooooooooobW" +
         "WoooooooooooooooW" +
         "WoooooooooooooooW" +
         "WoooooooooooooooW";
