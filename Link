@@ -40,25 +40,30 @@ public class Link extends Actor
         }
     }
     public void scroll(){
-        if (scrollTimer==0){
+      if (scrollTimer==0){
             ((FadeOverlay)getWorld().getObjects(FadeOverlay.class).get(0)).fadeOut();
         }
         scrollTimer++;
         if(scrollTimer==30){
             if (scroll==1){
-                xMove=-9; yMove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("right");
+                xmove=-9; ymove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("right");
+           
+                currentRoom[0]++;
             }
             if (scroll==2){
-                xMove=9; yMove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("left");
+                xmove=9; ymove=0; ((RandomlyGeneratingDungeon)getWorld()).scroll("left");
+                currentRoom[0]--;
             }
             if (scroll==3){
-                xMove=0; yMove=-9; ((RandomlyGeneratingDungeon)getWorld()).scroll("down");
+                xmove=0; ymove=-9; ((RandomlyGeneratingDungeon)getWorld()).scroll("down");
+                currentRoom[1]--;
             }
             if (scroll==4){
-                xMove=0; yMove=9; ((RandomlyGeneratingDungeon)getWorld()).scroll("up");
+                xmove=0; ymove=9; ((RandomlyGeneratingDungeon)getWorld()).scroll("up");
+                currentRoom[1]++;
             }
         }else if(scrollTimer>30){
-            setLocation(getX()+xMove,getY()+yMove);
+            setLocation(getX()+xmove,getY()+ymove);
             if (scroll==1&&getX()<=30){
                 scroll=0;
             }
