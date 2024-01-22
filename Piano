@@ -2,10 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Piano here.
- * This class should be under the world class
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Anu Yalla
+ * 01/22/24
  */
 public class Piano extends World
 {//String arrays that contain the notes each key has and which keyboard key needs to pressed in order to play it
@@ -14,7 +13,7 @@ public class Piano extends World
        private String[] whiteNotes =
        {"3c","3d","3e","3f","3g","3a","3b"};
        private String[] blackKeys =
-       {"F", "G", "", "H", "J", "K", ""};
+       {"F", "G", "", "H", "J", "K", ""};//The 5 black keys 
        private String[] blackNotes =
        {"3c#", "3d#", "", "3f#", "3g#", "3a#" };
     /**
@@ -23,39 +22,38 @@ public class Piano extends World
      */
 
     public Piano() 
-    {
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    {   // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         drawKeys();
         showPianoInstructions();
-        //drawKeys();
     }
     
     /*
      * make the piano's keys.
      */
     private void drawKeys() 
-    {
-        // draw the white keys
+    {   // draw the white keys
         for(int i = 0; i < whiteKeys.length; i++) {
-            PianoKey key = new PianoKey(whiteKeys[i], whiteNotes[i]+".wav", "WhiteKey.png", "WhiteKeyDown.png");
-            addObject(key, 120 + (i*62), 130);
+            //initialze the white keys in a row and draw them
+            PianoKey whiteKey = new PianoKey(whiteKeys[i], whiteNotes[i]+".wav", "WhiteKey.png", "WhiteKeyDown.png");
+            addObject(whiteKey, 120 + (i*62), 130);
         }
 
         //draw the black keys
         for(int i = 0; i < whiteKeys.length-1; i++) {
             if( ! blackKeys[i].equals("") ) {
-                PianoKey key = new PianoKey(blackKeys[i], blackNotes[i]+".wav", "BlackKey.png", "BlackKeyDown.png");
-                addObject(key, 151 + (i*63), 70);
+                //initialze the black keys in a row and draw them
+                PianoKey blackKey = new PianoKey(blackKeys[i], blackNotes[i]+".wav", "BlackKey.png", "BlackKeyDown.png");
+                addObject(blackKey, 151 + (i*63), 70);
             }
         }
     }
     
-    
     public void showPianoInstructions()
     {
         GreenfootImage bg = getBackground();
-        bg.setColor(Color.WHITE);
-        showText ("Use your zxc row keyboard to play notes", getWidth()/2, getHeight()/2 + getHeight()/3);
+        //bg.setColor(Color.WHITE);
+        showText ("Use your fghjk keys to play the black keys", getWidth()/2, getHeight()/2 + getHeight()/4);
+        showText ("Use your zxcvbnm row on your keyboard to play the white keys", getWidth()/2, getHeight()/2 + getHeight()/3);
     }
 }
